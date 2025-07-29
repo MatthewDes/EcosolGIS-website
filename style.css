@@ -1,0 +1,357 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #2c3e2d;
+    background: linear-gradient(135deg, #f8fffe 0%, #e8f5e8 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header and Navigation */
+header {
+    padding: 20px 0;
+    border-bottom: 1px solid #c7d2cc;
+    margin-bottom: 40px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #2c3e2d;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+    background: #a8d5ba;
+    color: #1a2e1d;
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Home Page Styles */
+.home-content {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero-section {
+    margin-bottom: 80px;
+}
+
+.company-title {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #1a2e1d;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.business-description {
+    font-size: 1.2rem;
+    color: #4a5d4e;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.contact-section {
+    padding: 40px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0ede3;
+}
+
+.contact-label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a2e1d;
+    margin-bottom: 15px;
+}
+
+.contact-info a {
+    color: #2d5a3d;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #1a2e1d;
+}
+
+/* Archive Page Styles */
+.archive-content {
+    padding: 20px 0;
+}
+
+.archive-header {
+    margin-bottom: 40px;
+}
+
+.archive-header h1 {
+    font-size: 2.5rem;
+    color: #1a2e1d;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Search Container */
+.search-container {
+    margin-bottom: 30px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: 2px solid #c7d2cc;
+    border-radius: 25px;
+    background: white;
+    color: #2c3e2d;
+    transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #a8d5ba;
+}
+
+.search-input::placeholder {
+    color: #8a9d8f;
+}
+
+/* Tag Filter Container */
+.tag-filter-container {
+    margin-bottom: 30px;
+}
+
+.tag-filter-label {
+    font-weight: 600;
+    color: #2c3e2d;
+    margin-bottom: 15px;
+}
+
+.tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-filter {
+    padding: 8px 16px;
+    background: white;
+    border: 2px solid #c7d2cc;
+    border-radius: 20px;
+    color: #2c3e2d;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.tag-filter:hover {
+    background: #f0f7f2;
+    border-color: #a8d5ba;
+}
+
+.tag-filter.active {
+    background: #a8d5ba;
+    border-color: #86c29a;
+    color: #1a2e1d;
+    font-weight: 600;
+}
+
+/* Projects Container */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+/* Project Card */
+.project-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0ede3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.project-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1a2e1d;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.project-tag {
+    padding: 5px 12px;
+    background: #e8f5e8;
+    color: #2d5a3d;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #c7d2cc;
+}
+
+.view-pdf-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #2d5a3d;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.view-pdf-btn:hover {
+    background: #1a2e1d;
+    transform: translateY(-2px);
+}
+
+/* State Messages */
+.loading-state,
+.empty-state,
+.error-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #4a5d4e;
+    font-size: 1.1rem;
+}
+
+.error-state {
+    color: #8b2635;
+    background: #ffeef0;
+    border-radius: 10px;
+    border: 1px solid #f5c2c7;
+}
+
+/* Footer */
+footer {
+    margin-top: 60px;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid #c7d2cc;
+    color: #4a5d4e;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .company-title {
+        font-size: 2.5rem;
+    }
+
+    .business-description {
+        font-size: 1.1rem;
+    }
+
+    .contact-section {
+        padding: 30px 20px;
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-card {
+        padding: 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    nav a {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .tag-filters {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .company-title {
+        font-size: 2rem;
+        letter-spacing: 1px;
+    }
+
+    .business-description {
+        font-size: 1rem;
+    }
+
+    .archive-header h1 {
+        font-size: 2rem;
+    }
+
+    .search-input {
+        padding: 12px 16px;
+    }
+
+    .project-card {
+        padding: 15px;
+    }
+
+    .project-title {
+        font-size: 1.2rem;
+    }
+}

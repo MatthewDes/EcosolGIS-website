@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Archive - EcosolGIS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="archive.html" class="active">Project Archive</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="archive-content">
+            <div class="archive-header">
+                <h1>Project Archive</h1>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search projects by title or tag..." class="search-input">
+                </div>
+
+                <!-- Tag Filter Bar -->
+                <div class="tag-filter-container">
+                    <div class="tag-filter-label">Filter by tags:</div>
+                    <div id="tagFilters" class="tag-filters">
+                        <!-- Tags will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Container -->
+            <div id="projectsContainer" class="projects-container">
+                <!-- Project cards will be dynamically loaded here -->
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                Loading projects...
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p>No projects found matching your search criteria.</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorState" class="error-state" style="display: none;">
+                <p>Error loading projects. Please try again later.</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 EcosolGIS. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
