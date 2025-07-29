@@ -27,9 +27,31 @@
 
             <div class="contact-section">
                 <h2 class="contact-label">Contact</h2>
-                <p class="contact-info">
-                    <a href="mailto:drphil@ecosolgis.com">drphil@ecosolgis.com</a>
-                </p>
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact">
+                    
+                    <!-- Honeypot field (invisible to humans) -->
+                    <p hidden>
+                      <label>Don’t fill this out: <input name="bot-field" /></label>
+                    </p>
+                    
+                    <p>
+                      <label>Your Name:<br>
+                      <input type="text" name="name" required></label>
+                    </p>
+                    
+                    <p>
+                      <label>Your Email:<br>
+                      <input type="email" name="email" required></label>
+                    </p>
+                    
+                    <p>
+                      <label>Message:<br>
+                      <textarea name="message" rows="5" required></textarea></label>
+                    </p>
+                    
+                    <p><button type="submit">Send</button></p>
+                  </form>
             </div>
         </main>
 

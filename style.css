@@ -87,13 +87,15 @@ main {
 }
 
 .contact-section {
-    padding: 25px 30px;
+    padding: 40px;
     background: white;
     border-radius: 12px;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
     border: 1px solid #e0ede3;
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
+    font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+    text-align: left;
 }
 
 .contact-label {
@@ -113,6 +115,49 @@ main {
 
 .contact-info a:hover {
     color: #1a2e1d;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-section input,
+.contact-section textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #c7d2cc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+    background: #f9fdf9;
+    color: #2c3e2d;
+    transition: border-color 0.3s ease;
+}
+
+.contact-section input:focus,
+.contact-section textarea:focus {
+    outline: none;
+    border-color: #a8d5ba;
+    background: #ffffff;
+}
+
+.contact-section button {
+    align-self: flex-start;
+    padding: 12px 24px;
+    background-color: #2d5a3d;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-section button:hover {
+    background-color: #1a2e1d;
 }
 
 /* Archive Page Styles */
