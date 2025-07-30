@@ -1,5 +1,5 @@
 // Admin panel JavaScript for managing project uploads
-const API_BASE_URL = 'http://localhost:3000'; // Change this for production
+const API_BASE_URL = '/.netlify/functions'; 
 
 // DOM elements
 const projectForm = document.getElementById('projectForm');
@@ -90,7 +90,7 @@ function collectFormData() {
 async function submitProject(projectData) {
     const { token, ...project } = projectData;
     
-    const response = await fetch(`${API_BASE_URL}/api/projects`, {
+    const response = await fetch(`${API_BASE_URL}/add-project`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
