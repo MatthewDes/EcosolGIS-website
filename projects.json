@@ -1,18 +1,21 @@
-[
-  {
-    "title": "EIA Report - Wetland Restoration",
-    "tags": ["EIA", "wetlands", "2023"],
-    "file": "pdfs/eia-wetland.pdf"
-  },
-  {
-    "title": "Protected Area Design - KZN",
-    "tags": ["protected area", "KZN", "2022"],
-    "file": "pdfs/kzn-protected-area.pdf"
-  },
-  {
-    "title": "SANBI. 2016. Lexicon of Biodiversity Planning in South Africa",
-    "tags": ["SANBI", "Biodiversity Planning", "2016"],
-    "file": "https://www.dropbox.com/scl/fi/v738k6jco5tfly5600u8f/2016_06_02-Lexicon.pdf?rlkey=mihunkjjwonbxj6pbqkptuo1t&st=l8ttbayy&dl=1"
-    
-  }
-]
+{
+  "projects":[
+    {
+      "title": "EIA Report - Wetland Restoration",
+      "tags": ["EIA", "wetlands", "2023"],
+      "file": "pdfs/eia-wetland.pdf"
+    },
+    {
+      "title": "Protected Area Design - KZN",
+      "tags": ["protected area", "KZN", "2022"],
+      "file": "pdfs/kzn-protected-area.pdf"
+    },
+    {
+      "title": "SANBI. 2016. Lexicon of Biodiversity Planning in South Africa",
+      "tags": ["SANBI", "Biodiversity Planning", "2016"],
+      "file": "https://www.dropbox.com/scl/fi/v738k6jco5tfly5600u8f/2016_06_02-Lexicon.pdf?rlkey=mihunkjjwonbxj6pbqkptuo1t&st=l8ttbayy&dl=1"
+      
+    }
+  ]
+}
+

@@ -38,30 +38,42 @@ async function initializeArchive() {
 
 /**
  * Load projects from the JSON file
+ * Supports:
+ *  - [ { ... }, { ... } ]                       (legacy: top-level array)
+ *  - { "projects": [ { ... }, { ... } ] }       (Decap CMS-friendly)
  */
 async function loadProjects() {
     try {
         const response = await fetch('projects.json');
-        
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const data = await response.json();
-        
-        if (!Array.isArray(data)) {
-            throw new Error('Invalid data format: expected an array of projects');
+
+        // Accept either a top-level array OR an object with a "projects" array
+        let projectsArray = null;
+        if (Array.isArray(data)) {
+            projectsArray = data; // legacy format
+        } else if (data && Array.isArray(data.projects)) {
+            projectsArray = data.projects; // wrapped format
         }
-        
-        allProjects = data;
+
+        if (!Array.isArray(projectsArray)) {
+            throw new Error('Invalid data format: expected an array of projects or an object with a "projects" array');
+        }
+
+        allProjects = projectsArray;
         filteredProjects = [...allProjects];
-        
+
         console.log(`Successfully loaded ${allProjects.length} projects`);
     } catch (error) {
         console.error('Error loading projects:', error);
-        throw error;
+        throw error; // let the caller show the error state
     }
 }
+
 
 /**
  * Setup event listeners for search and filtering
