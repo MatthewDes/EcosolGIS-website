@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "static/uploads"    
+public_folder: "/uploads"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    files:
+      - file: "projects.json"
+        label: "Projects List"
+        name: "projects_list"
+        format: "json"
+        fields:
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Tags", name: "tags", widget: "list", field: {label: "Tag", name: "tag", widget: "string"} }
+              - { label: "PDF File", name: "file", widget: "string", hint: "Dropbox link ending with ?dl=1" }

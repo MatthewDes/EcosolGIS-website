@@ -1,118 +1,15 @@
-<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <title>Content Manager</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <!-- Netlify Identity script -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- Load Netlify Identity (needed for Git Gateway login redirect) -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
-  <!-- Tell Decap CMS to wait for manual init -->
-  <script>window.CMS_MANUAL_INIT = true;</script>
-
-  <!-- Decap CMS (don't init automatically because of CMS_MANUAL_INIT) -->
-  <script src="https://unpkg.com/decap-cms-app@^3.0.0/dist/decap-cms.js"></script>
-
-  <!-- YAML parser for the browser -->
-  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
-</head>
-<body>
-  <div id="netlify-cms-root"></div>
-
-  <script>
-  (async function() {
-    // --- 1) try to load tags.yml from the site root
-    let tagOptions = [];
-    try {
-      const res = await fetch('/tags.yml');
-      if (res.ok) {
-        const text = await res.text();
-        const parsed = jsyaml.load(text); // js-yaml global from CDN
-        if (parsed && Array.isArray(parsed.tags)) {
-          tagOptions = parsed.tags.map(t => String(t).trim()).filter(Boolean);
-        }
-      } else {
-        console.warn('tags.yml not found (status ' + res.status + '). Proceeding with empty tag list.');
-      }
-    } catch (err) {
-      console.warn('Error reading tags.yml:', err);
-    }
-
-    // --- 2) build Decap config object dynamically
-    const config = {
-      backend: { name: "git-gateway", branch: "main" },  // change branch if you use master
-      media_folder: "static/uploads",
-      public_folder: "/uploads",
-      site_url: window.location.origin,
-      collections: [
-        // Tags file (so you can edit the tags list in the CMS)
-        {
-          label: "Tags",
-          name: "tags",
-          files: [
-            {
-              file: "tags.yml",
-              label: "Tags file",
-              name: "tags_file",
-              format: "yaml",
-              fields: [
-                {
-                  label: "Tags",
-                  name: "tags",
-                  widget: "list",
-                  // each list item is a plain string
-                  field: { label: "Tag", name: "tag", widget: "string" }
-                }
-              ]
-            }
-          ]
-        },
-
-        // Projects file (your existing single-file collection)
-        {
-          label: "Projects",
-          name: "projects",
-          files: [
-            {
-              file: "projects.json",
-              label: "Projects list",
-              name: "projects_file",
-              format: "json",
-              fields: [
-                {
-                  label: "Projects",
-                  name: "projects",
-                  widget: "list",
-                  fields: [
-                    { label: "Title", name: "title", widget: "string" },
-                    // TAGS FIELD -> select, options injected from tags.yml
-                    {
-                      label: "Tags",
-                      name: "tags",
-                      widget: "select",
-                      multiple: true,
-                      options: tagOptions,
-                      hint: "Select tags from the list (type to search). To add a new tag, edit the Tags file."
-                    },
-                    { label: "PDF File", name: "file", widget: "string", hint: "Paste Dropbox link (it will be fixed on the frontend)" }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    };
-
-    // --- 3) initialize the CMS with our config
-    try {
-      window.CMS.init({ config });
-    } catch (err) {
-      console.error('Failed to init Decap CMS:', err);
-    }
-  })();
-  </script>
-</body>
+    <!-- Decap CMS script -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
 </html>
