@@ -39,9 +39,8 @@ async function initializeArchive() {
 /**
  * Load projects from the JSON file
  * Supports:
- *  - [ { ... }, { ... } ]                         (legacy: top-level array)
- *  - { "projects": [ { ... }, { ... } ] }         (Decap CMS-friendly)
- * Also normalises Dropbox links to use dl=1.
+ *  - [ { ... }, { ... } ]                       (legacy: top-level array)
+ *  - { "projects": [ { ... }, { ... } ] }       (Decap CMS-friendly)
  */
 async function loadProjects() {
     try {
@@ -65,60 +64,13 @@ async function loadProjects() {
             throw new Error('Invalid data format: expected an array of projects or an object with a "projects" array');
         }
 
-        // Normalise each project (fix Dropbox dl param; ensure tags are a clean string array)
-        const normalised = projectsArray.map((p) => {
-            const project = { ...p };
-
-            // Ensure tags is an array of trimmed strings
-            if (Array.isArray(project.tags)) {
-                project.tags = project.tags
-                    .map(t => typeof t === 'string' ? t.trim() : '')
-                    .filter(Boolean);
-            } else {
-                project.tags = [];
-            }
-
-            // Fix Dropbox links (?dl=0 -> ?dl=1; add dl=1 if missing)
-            if (typeof project.file === 'string') {
-                project.file = normaliseDropboxLink(project.file);
-            }
-
-            return project;
-        });
-
-        allProjects = normalised;
+        allProjects = projectsArray;
         filteredProjects = [...allProjects];
 
         console.log(`Successfully loaded ${allProjects.length} projects`);
     } catch (error) {
         console.error('Error loading projects:', error);
         throw error; // let the caller show the error state
-    }
-}
-
-/**
- * Ensure Dropbox links use dl=1 (force direct download/open)
- * - If dl=0, switch to dl=1
- * - If no dl param, add dl=1
- * - Non-Dropbox URLs are returned untouched
- */
-function normaliseDropboxLink(url) {
-    try {
-        const u = new URL(url, window.location.origin);
-        if (u.hostname.includes('dropbox.com')) {
-            if (u.searchParams.has('dl')) {
-                if (u.searchParams.get('dl') !== '1') {
-                    u.searchParams.set('dl', '1');
-                }
-            } else {
-                u.searchParams.append('dl', '1');
-            }
-            return u.toString();
-        }
-        return url; // not a Dropbox URL
-    } catch {
-        // If URL parsing fails for any reason, leave as-is
-        return url;
     }
 }
 
